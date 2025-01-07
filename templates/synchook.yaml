@@ -11,6 +11,14 @@ spec:
       containers:
       - name: test-message
         image: ubuntu
-        command: ["apt", "update", "&&", "apt", "upgrade", "-y"]
+        command: ["/bin/sh", "-c", "/scripts/post-sync.sh"]
+        volumeMounts:
+          - name: script-volume
+            mountPath: /scripts
+            readOnly: true
       restartPolicy: Never
+      volumes:
+        - name: script-volume
+          configMap:
+            name: post-sync-script-configmap      
   backoffLimit: 2

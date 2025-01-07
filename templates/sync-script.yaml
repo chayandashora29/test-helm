@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: post-sync-script-configmap
+data:
+  post-sync.sh: |
+    #!/bin/sh
+    echo "Post Sync Hook is running..."
+    apt update && apt upgrade -y
