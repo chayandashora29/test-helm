@@ -11,8 +11,6 @@ spec:
       containers:
       - name: test-message
         image: ubuntu
-        command: |
-          #!/bin/bash
-          apt update && apt upgrade -y
+        command: ["apt", "update", "&&", "apt", "upgrade", "-y"]
       restartPolicy: Never
   backoffLimit: 2
