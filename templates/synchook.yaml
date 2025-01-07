@@ -15,10 +15,10 @@ spec:
         volumeMounts:
           - name: script-volume
             mountPath: /scripts
-            readOnly: true
       restartPolicy: Never
       volumes:
         - name: script-volume
           configMap:
-            name: post-sync-script-configmap      
+            name: post-sync-script-configmap
+            defaultMode: 0777
   backoffLimit: 2
