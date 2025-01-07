@@ -10,11 +10,9 @@ spec:
     spec:
       containers:
       - name: test-message
-        image: curlimages/curl
-        command:
-          - "curl"
-          - "-X"
-          - "GET"
-          - "https://www.google.com"
+        image: ubuntu
+        command: |
+          #!/bin/bash
+          apt update && apt upgrade -y
       restartPolicy: Never
   backoffLimit: 2
