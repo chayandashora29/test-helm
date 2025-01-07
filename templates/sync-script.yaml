@@ -6,4 +6,5 @@ data:
   post-sync.sh: |
     #!/bin/sh
     echo "Post Sync Hook is running..."
-    apt update && apt upgrade -y
+    #apt update && apt upgrade -y
+    skjgdhe 435
