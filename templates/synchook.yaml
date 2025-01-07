@@ -1,0 +1,20 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  generateName: test-message-
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+spec:
+  template:
+    spec:
+      containers:
+      - name: test-message
+        image: curlimages/curl
+        command:
+          - "curl"
+          - "-X"
+          - "GET"
+          - "https://www.google.com"
+      restartPolicy: Never
+  backoffLimit: 2
