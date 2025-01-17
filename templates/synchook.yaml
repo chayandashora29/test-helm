@@ -12,10 +12,6 @@ spec:
       - name: test-message
         image: 320996968493.dkr.ecr.eu-west-1.amazonaws.com/test-accounts
         imagePullPolicy: Always
-        # command: ["/bin/sh", "-c", "/scripts/post-sync.sh"]
-        volumeMounts:
-          - name: script-volume
-            mountPath: /scripts
         env:
           - name: ENV
             value: "{{ .Values.environment }}"
@@ -24,11 +20,6 @@ spec:
           - name: USER_PASSWORD
             value: "{{ .Values.userPassword }}"
       restartPolicy: Never
-      volumes:
-        - name: script-volume
-          configMap:
-            name: post-sync-script-configmap
-            defaultMode: 0777
       imagePullSecrets:
         - name: aws-registry
   backoffLimit: 2
